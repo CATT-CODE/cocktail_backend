@@ -6,11 +6,13 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 var cors = require('cors');
 
+require("dotenv").config();
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users/usersRouter');
 
 mongoose
-  .connect("mongodb://localhost:27017/movie-with-friends", {
+  .connect(process.env.MONGO_DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
